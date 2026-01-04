@@ -25,3 +25,5 @@ Route::get('/inspector', [InspectorController::class, 'index'])->middleware('rol
 Route::get('/analyst', [AnalystController::class, 'index'])->middleware('rolechecker:analyst');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('rolechecker:admin');
+
+Route::get('/cases/{id}', [InspectorController::class, 'showcases'])->middleware('rolechecker:inspector');

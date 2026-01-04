@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h4 class=""><x-navigation></x-navigation></h4>
-    <h1>sveiki broker!</h1>
+    <h1>{{ $case->id }}</h1>
 </body>
 </html>

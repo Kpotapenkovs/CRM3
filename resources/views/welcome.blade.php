@@ -15,36 +15,6 @@
     <br>
 
 
-      @if (Auth::user()->role == 'broker') 
-
-        <a href="/broker">darba lapa</a>
-      
-      @endif
-
-
-
-  @if (Auth::user()->role == 'inspector') 
-
-<a href="/inspector">darba lapa</a>
-
-@endif
-
-
-
-      @if (Auth::user()->role == 'analyst') 
-
-      <a href="/analyst">darba lapa</a>
-
-      @endif
-
-
-
-@if (Auth::user()->role == 'admin') 
-
-<a href="/admin">darba lapa</a>
-
-@endif
-
 <form action="/logout" method="POST">
 @csrf
 
