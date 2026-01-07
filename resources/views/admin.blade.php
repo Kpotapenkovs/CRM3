@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h4 class=""><x-navigation></x-navigation></h4>
+    <x-navigationAdmin></x-navigationAdmin></h4>
     <h1>sveiki admin!</h1>
 </body>
 </html>

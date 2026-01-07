@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parties extends Model
 {
+
+    protected $primaryKey = 'id';
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
     protected $fillable = [
         'id',
         'type',

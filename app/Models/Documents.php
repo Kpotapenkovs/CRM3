@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Documents extends Model
 {
+
+    protected $primaryKey = 'id';
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
     protected $fillable = [
         'id',
         'case_id',

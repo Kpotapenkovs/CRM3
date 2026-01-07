@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Models\Cases;
 
+use App\Models\Inspections;
+
 class InspectorController extends Controller
 {
     public function index()
     {
-         $cases = Cases::all();
-        return view("inspector", compact('cases'));
+         $inspections = Inspections::all();
+        return view("inspection.inspector", compact('inspections'));
     }
 
-        public function showcases(Cases $case)
+    public function showInspections(Inspections $inspection)
     {
-        return view("cases", compact('case'));
+        return view("inspection.inspections", compact('inspection'));
     }
 }

@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vehicles extends Model
 {
+
+    protected $primaryKey = 'id';
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
     protected $fillable = [
         'id',
         'plate_no',

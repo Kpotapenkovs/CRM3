@@ -7,6 +7,7 @@ use App\Http\Controllers\BrokerController;
 use App\Http\Controllers\InspectorController;
 use App\Http\Controllers\AnalystController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CrmController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,12 +19,37 @@ Route::post('/', [SessionController::class, 'store']);
 
 Route::post('/logout', [SessionController::class, 'destroy']);
 
-Route::get('/broker', [BrokerController::class, 'index'])->middleware('rolechecker:broker');
+Route::get('/broker', [BrokerController::class, 'index'])->middleware('rolechecker:broker,admin');
 
-Route::get('/inspector', [InspectorController::class, 'index'])->middleware('rolechecker:inspector');
+Route::get('/inspector', [InspectorController::class, 'index'])->middleware('rolechecker:inspector,admin');
 
-Route::get('/analyst', [AnalystController::class, 'index'])->middleware('rolechecker:analyst');
+Route::get('/analyst', [AnalystController::class, 'index'])->middleware('rolechecker:analyst,admin');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('rolechecker:admin');
 
-Route::get('/cases/{id}', [InspectorController::class, 'showcases'])->middleware('rolechecker:inspector');
+Route::get('/inspections/{inspection}', [InspectorController::class, 'showInspections'])->middleware('rolechecker:inspector,admin');
+
+
+Route::get('/cases/{case}', [CrmController::class, 'showCases']);
+
+Route::get('/cases', [CrmController::class, 'cases']);
+
+
+Route::get('/vehicles', [CrmController::class, 'vehicles']);
+
+Route::get('/vehicles/{vehicle}', [CrmController::class, 'showVehicles']);
+
+
+Route::get('/documents', [CrmController::class, 'documents']);
+
+Route::get('/documents/{document}', [CrmController::class, 'showDocuments']);
+
+
+Route::get('/parties', [CrmController::class, 'parties']);
+
+Route::get('/parties/{part}', [CrmController::class, 'showParties']);
+
+
+Route::get('/users', [CrmController::class, 'users']);
+
+Route::get('/users/{user}', [CrmController::class, 'showUsers']);
