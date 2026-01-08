@@ -16,6 +16,7 @@ use App\Models\Vehicles;
 
 use Illuminate\Http\Request;
 
+
 class crmController extends Controller
 {
     public function cases()
@@ -78,4 +79,33 @@ class crmController extends Controller
         return view("users.showusers", compact('user'));
     }
     
+    public function destroy(User $user){
+      $user->delete();
+      return redirect("/users");
+    }
+
+    public function edit(User $user) {
+        return view("users.edituser", compact("user"));
+      }
+
+        public function update(Request $request, User $user) {
+
+      $validated = $request->validate([
+        "username" => ["required", "max:255"],
+        "full_name" => ["required", "max:255"],
+        "role" => ["required", "in:admin,inspector,broker,analyst"],
+        "password" => ["required"],
+        "active" => ["required", "boolean"]
+
+      ]);
+
+      $user->username = $validated["username"];
+      $user->full_name = $validated["full_name"];
+      $user->role = $validated["role"];
+      $user->password = bcrypt($validated["password"]);
+      $user->active = $validated["active"];
+      $user->save();
+      return redirect("/users");
+    }
+
 }

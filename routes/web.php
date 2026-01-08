@@ -50,6 +50,12 @@ Route::get('/parties', [CrmController::class, 'parties']);
 Route::get('/parties/{part}', [CrmController::class, 'showParties']);
 
 
-Route::get('/users', [CrmController::class, 'users']);
+Route::get('/users', [CrmController::class, 'users'])->middleware('rolechecker:admin');
 
-Route::get('/users/{user}', [CrmController::class, 'showUsers']);
+Route::get('/users/{user}', [CrmController::class, 'showUsers'])->middleware('rolechecker:admin');
+
+Route::delete('/users/{user}', [Crmcontroller::class, 'destroy'])->middleware('rolechecker:admin'); 
+
+Route::get('/users/{user}/edit', [CrmController::class, 'edit']);
+
+Route::put('/users/{user}', [CrmController::class, 'update']);
