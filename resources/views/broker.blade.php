@@ -7,6 +7,9 @@
 </head>
 <body>
     <h4 class=""><x-navigation></x-navigation></h4>
+    <ul><h1><a href="cases">cases</a></h1></ul>
+    <ul><h1><a href="documents">Documents</a></h1></ul>
+    <ul><h1><a href="vehicles">vehicles</a></h1></ul>
     <h1>sveiki broker!</h1>
 </body>
 </html>

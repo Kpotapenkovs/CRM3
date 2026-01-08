@@ -18,6 +18,9 @@ use Illuminate\Http\Request;
 
 class crmController extends Controller
 {
+
+  
+
     public function cases()
     {
          $cases = Cases::all();
@@ -77,5 +80,35 @@ class crmController extends Controller
     {
         return view("users.showusers", compact('user'));
     }
+
+  public function createUser () {
+        return view('users.createuser');
+    }
+
+    public function store(Request $request) {
+        
+        $validated = $request->validate([
+            "user_id" => ["required", "max:255"],
+            "username" => ["required", "max:255"],
+            "full_name" => ["required", "max:255"],
+            "password" => ["required", "max:255"],
+            "role" => ["required", "max:255"],
+            "active" => ["required", "max:1"]
+
+          ]);
+        
+        User::create([
+            "user_id" => $request->user_id,
+            "username" => $request->username,
+            "password" => bcrypt($request->password),
+            "full_name" => $request->full_name,
+            "role" => $request->role,
+            "active" => $request->active
+          ]);
+        
+        return redirect("/users");
+    }
+
+   
     
 }

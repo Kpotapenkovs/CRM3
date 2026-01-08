@@ -52,4 +52,15 @@ Route::get('/parties/{part}', [CrmController::class, 'showParties']);
 
 Route::get('/users', [CrmController::class, 'users']);
 
+Route::get('users/create', [CrmController::class, 'createUser']);
+
 Route::get('/users/{user}', [CrmController::class, 'showUsers']);
+
+
+
+Route::post('/users', [CrmController::class, 'store']);
+
+
+
+
+
