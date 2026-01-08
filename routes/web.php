@@ -59,3 +59,16 @@ Route::delete('/users/{user}', [Crmcontroller::class, 'destroy'])->middleware('r
 Route::get('/users/{user}/edit', [CrmController::class, 'edit']);
 
 Route::put('/users/{user}', [CrmController::class, 'update']);
+
+Route::get('users/create', [CrmController::class, 'createUser']);
+
+Route::get('/users/{user}', [CrmController::class, 'showUsers']);
+
+
+
+Route::post('/users', [CrmController::class, 'store']);
+
+
+
+
+
